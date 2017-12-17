@@ -35,7 +35,7 @@ lcd.clear()
 
 while 1:
 	lcd.clear()
-	lcd.message(time.strftime("%d.%m.%y %H:%M:%S"))
+	lcd.message(time.strftime("%d.%m.%y %H:%M\n"))
 	time.sleep(1.0)
 	secondline = "";
 	
