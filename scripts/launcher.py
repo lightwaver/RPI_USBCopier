@@ -30,29 +30,29 @@ def makedirs(dest):
         os.makedirs(dest)
 
 def copyFilesWithProgress(src, dest, lcd):
-    numFiles = countFiles(src)
+	numFiles = countFiles(src)
  
-    if numFiles > 0:
-        makedirs(dest)
+	if numFiles > 0:
+		makedirs(dest)
  
-        numCopied = 0
+		numCopied = 0
  
-        for path, dirs, filenames in os.walk(src):
-            for directory in dirs:
-                destDir = path.replace(src,dest)
-                makedirs(os.path.join(destDir, directory))
+		for path, dirs, filenames in os.walk(src):
+			for directory in dirs:
+				destDir = path.replace(src,dest)
+				makedirs(os.path.join(destDir, directory))
             
-            for sfile in filenames:
-                srcFile = os.path.join(path, sfile)
+			for sfile in filenames:
+				srcFile = os.path.join(path, sfile)
  
-                destFile = os.path.join(path.replace(src, dest), sfile)
+				destFile = os.path.join(path.replace(src, dest), sfile)
                 
-                shutil.copy(srcFile, destFile)
+				shutil.copy(srcFile, destFile)
                 
-                numCopied += 1
+				numCopied += 1
                 
-                progress = int(round( (done / float(total)) * 100))
-
+				progress = int(round( (done / float(total)) * 100))
+				
 				lcd.clear()
 				msg = u'copy in progress\n{0}/{1}  {2}%'.format(done, total, progress)
 				lcd.message(msg)
