@@ -34,17 +34,21 @@ time.sleep(2.0)
 lcd.clear()
 
 while 1:
-	lcd.clear()
-	lcd.message(time.strftime("%d.%m.%y %H:%M\n"))
+	firstline = time.strftime("%d.%m.%y %H:%M")
 	time.sleep(1.0)
-	secondline = "";
+	
+	secondline = ""
 	
 	if os.path.ismount("/media/usb0"):
-		secondline += " usb0"
-
+        	secondline = secondline + " usb0"
+	
 	if os.path.ismount("/media/usb1"):
-		secondline += " usb1"
+        	secondline = secondline + " usb1"
 
-	lcd.message(secondline)
+	#print(secondline)
+	lcd.clear()
+	output = firstline +"\n" + secondline
+	print(output)
+	lcd.message(output)
 lcd.clear()
 

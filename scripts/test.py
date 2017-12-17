@@ -1,3 +1,5 @@
+import os
+
 secondline = ""
 
 if os.path.ismount("/media/usb0"):
