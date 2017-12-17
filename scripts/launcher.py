@@ -121,7 +121,10 @@ while 1:
 		time.sleep(3.0)
 		copied = 1
 	else:
-		copied = 0
+		if usb0 & usb1:
+			copied = copied
+		else:
+			copied = 0
 		 
 lcd.clear()
 
