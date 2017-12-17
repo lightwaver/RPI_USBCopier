@@ -115,6 +115,7 @@ try:
 
 		lcd.clear()
 		output = firstline +"\n" + secondline
+		lcd.message(output)
 		time.sleep(1.0)
 
 		if usb0 & usb1 & (copied == 0):
