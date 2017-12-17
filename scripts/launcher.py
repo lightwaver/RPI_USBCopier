@@ -88,14 +88,12 @@ time.sleep(2.0)
 lcd.clear()
 
 copied = false
-
 while 1:
 	firstline = time.strftime("%d.%m.%y %H:%M")
 	time.sleep(1.0)
 	
 	secondline = ""
 	
-<<<<<<< HEAD
 	if os.path.ismount("/media/usb0"):
         	secondline = secondline + " usb0"
 	
@@ -107,7 +105,7 @@ while 1:
 	output = firstline +"\n" + secondline
 	print(output)
 	lcd.message(output)
-=======
+
 	usb0=false
 	usb1=false
 	if os.path.ismount(usb0path):
@@ -133,6 +131,5 @@ while 1:
 	else:
 		copied = false
 		 
->>>>>>> bc2b791dbda0e89e7424165366ff13dac338cc84
 lcd.clear()
 
