@@ -57,6 +57,13 @@ def copyFilesWithProgress(src, dest, lcd):
 				msg = u'copy in progress\n{0}/{1}  {2}%'.format(numCopied, numFiles, progress)
 				lcd.message(msg)
 
+def printHello(lcd):
+	lcd.message('Hello!\n')
+	myIp = commands.getoutput("hostname -I")
+	lcd.message(myIp)
+	# Wait 5 seconds
+	time.sleep(2.0)
+	lcd.clear()
 
 #-------------------------------------------------------------
 # Main Task
@@ -78,14 +85,7 @@ lcd_rows = 2
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 lcd.clear()
 
-lcd.message('Hello!\n')
-
-myIp = commands.getoutput("hostname -I")
-
-lcd.message(myIp)
-# Wait 5 seconds
-time.sleep(2.0)
-lcd.clear()
+printHello(lcd)
 
 copied = 0
 while 1:
@@ -94,7 +94,6 @@ while 1:
 
 	lcd.clear()
 	output = firstline +"\n" + secondline
-	print(output)
 	lcd.message(output)
 
 	usb0 = 0
@@ -119,6 +118,7 @@ while 1:
 		lcd.clear()
 		lcd.message("copy finished\nremove the stick")
 		time.sleep(10.0)
+		printHello(lcd)
 		copied = 1
 	else:
 		if usb0 & usb1:
