@@ -1,10 +1,12 @@
 #!/usr/bin/python
 # Example using a character LCD connected to a Raspberry Pi
+
 import time
 import Adafruit_CharLCD as LCD
 import datetime
 import socket
 import commands
+import os
 
 # raspbpberry Pi pin setup
 lcd_rs = 25
@@ -33,8 +35,16 @@ lcd.clear()
 
 while 1:
 	lcd.clear()
-	lcd.message(time.strftime("%d.%m.%y\n%H:%M:%S"))
+	lcd.message(time.strftime("%d.%m.%y %H:%M:%S"))
 	time.sleep(1.0)
+	secondline = "";
+	
+	if os.path.ismount("/media/usb0"):
+		secondline += " usb0"
 
+	if os.path.ismount("/media/usb1"):
+		secondline += " usb1"
+
+	lcd.message(secondline)
 lcd.clear()
 
