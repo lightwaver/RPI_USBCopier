@@ -110,7 +110,7 @@ while 1:
 	lcd.message(secondline)
 	time.sleep(1.0)
 
-	if usb0 & usb1 & (copied == 1):
+	if usb0 & usb1 & (copied == 0):
 		lcd.clear()
 		lcd.message("copy starting")
 		time.sleep(3.0)
