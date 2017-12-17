@@ -102,7 +102,6 @@ try:
 			lcd.clear()
 			lcd.message(output)
 			time.sleep(3);
-			lcd.clear()
 
 		usb0 = 0
 		usb1 = 0
@@ -114,7 +113,8 @@ try:
 			secondline += " usb1"
 			usb1 = 1
 
-		lcd.message(secondline)
+		lcd.clear()
+		output = firstline +"\n" + secondline
 		time.sleep(1.0)
 
 		if usb0 & usb1 & (copied == 0):
