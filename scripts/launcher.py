@@ -123,6 +123,7 @@ while 1:
 		except Exception as e: 
 			lcd.clear()
 			lcd.message("OOPS ERROR:\n" + e.message)
+			time.sleep(10.0)
 		copied = 1
 	else:
 		if usb0 & usb1:
