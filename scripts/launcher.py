@@ -51,10 +51,10 @@ def copyFilesWithProgress(src, dest, lcd):
                 
 				numCopied += 1
                 
-				progress = int(round( (done / float(total)) * 100))
+				progress = int(round( (numCopied / float(total)) * 100))
 				
 				lcd.clear()
-				msg = u'copy in progress\n{0}/{1}  {2}%'.format(done, total, progress)
+				msg = u'copy in progress\n{0}/{1}  {2}%'.format(numCopied, total, progress)
 				lcd.message(msg)
 
 
