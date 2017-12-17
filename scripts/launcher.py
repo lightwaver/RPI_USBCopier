@@ -97,6 +97,8 @@ while 1:
 	print(output)
 	lcd.message(output)
 
+	usb0 = 0
+	usb1 = 0
 	if os.path.ismount(usb0path):
 		secondline += " usb0"
 		usb0 = 1
