@@ -87,49 +87,56 @@ lcd.clear()
 
 printHello(lcd)
 
-copied = 0
-while 1:
-	firstline = time.strftime("%d.%m.%y %H:%M")
-	secondline = ""
+try:
+	copied = 0
+	while 1:
+		firstline = time.strftime("%d.%m.%y %H:%M")
+		secondline = ""
 
-	lcd.clear()
-	output = firstline +"\n" + secondline
-	lcd.message(output)
+		lcd.clear()
+		output = firstline +"\n" + secondline
+		lcd.message(output)
 
-	usb0 = 0
-	usb1 = 0
-	if os.path.ismount(usb0path):
-		secondline += " usb0"
-		usb0 = 1
+		usb0 = 0
+		usb1 = 0
+		if os.path.ismount(usb0path):
+			secondline += " usb0"
+			usb0 = 1
 
-	if os.path.ismount(usb1path):
-		secondline += " usb1"
-		usb1 = 1
+		if os.path.ismount(usb1path):
+			secondline += " usb1"
+			usb1 = 1
 
-	lcd.message(secondline)
-	time.sleep(1.0)
+		lcd.message(secondline)
+		time.sleep(1.0)
 
-	if usb0 & usb1 & (copied == 0):
-		try:
-			lcd.clear()
-			lcd.message("copy starting")
-			time.sleep(3.0)
-			copyFilesWithProgress(usb1path, usb0path, lcd)
+		if usb0 & usb1 & (copied == 0):
+			try:
+				lcd.clear()
+				lcd.message("copy starting")
+				time.sleep(3.0)
+				copyFilesWithProgress(usb1path, usb0path, lcd)
 
-			lcd.clear()
-			lcd.message("copy finished\nremove the stick")
-			time.sleep(10.0)
-			printHello(lcd)
-		except Exception as e: 
-			lcd.clear()
-			lcd.message("OOPS ERROR:\n" + e.message)
-			time.sleep(10.0)
-		copied = 1
-	else:
-		if usb0 & usb1:
-			copied = copied
+				lcd.clear()
+				lcd.message("copy finished\nremove the stick")
+				time.sleep(10.0)
+				printHello(lcd)
+			except BaseException  as e: 
+				lcd.clear()
+				lcd.message("OOPS ERROR...\n{}".format(e))
+				time.sleep(10.0)
+			copied = 1
 		else:
-			copied = 0
-		 
+			if usb0 & usb1:
+				copied = copied
+			else:
+				copied = 0
+
+except BaseException  as e: 
+	copied=10
+
+lcd.clear()
+lcd.message("Bye Bye...")
+
 lcd.clear()
 
