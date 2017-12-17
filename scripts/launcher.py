@@ -87,7 +87,7 @@ lcd.message(myIp)
 time.sleep(2.0)
 lcd.clear()
 
-copied = false
+copied = 0
 while 1:
 	firstline = time.strftime("%d.%m.%y %H:%M")
 	time.sleep(1.0)
@@ -95,10 +95,10 @@ while 1:
 	secondline = ""
 	
 	if os.path.ismount("/media/usb0"):
-        	secondline = secondline + " usb0"
+		secondline = secondline + " usb0"
 	
 	if os.path.ismount("/media/usb1"):
-        	secondline = secondline + " usb1"
+		secondline = secondline + " usb1"
 
 	#print(secondline)
 	lcd.clear()
@@ -118,7 +118,7 @@ while 1:
 
 	lcd.message(secondline)
 
-	if usb0 & usb1 & (copied != true):
+	if usb0 & usb1 & (copied == 1):
 		lcd.clear()
 		lcd.message("copy starting")
 		time.sleep(3.0)
@@ -127,9 +127,9 @@ while 1:
 		lcd.clear()
 		lcd.message("copy finished\remove the stick")
 		time.sleep(3.0)
-		copied = true
+		copied = 1
 	else:
-		copied = false
+		copied = 0
 		 
 lcd.clear()
 
