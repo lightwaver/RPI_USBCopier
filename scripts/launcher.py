@@ -97,12 +97,12 @@ try:
 
 		myIp = commands.getoutput("hostname -I")
 		if lastIP != myIp:
-			output = firstline +"\n" + myIp
 			lastIP = myIp;
+			output = firstline +"\n" + myIp
 			lcd.clear()
 			lcd.message(output)
 			time.sleep(3);
-			continue
+			lcd.clear()
 
 		usb0 = 0
 		usb1 = 0
