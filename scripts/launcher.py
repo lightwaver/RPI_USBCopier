@@ -117,8 +117,8 @@ while 1:
 		copyFilesWithProgress(usb1path, usb0path, lcd)
 
 		lcd.clear()
-		lcd.message("copy finished\remove the stick")
-		time.sleep(3.0)
+		lcd.message("copy finished\nremove the stick")
+		time.sleep(10.0)
 		copied = 1
 	else:
 		if usb0 & usb1:
