@@ -106,15 +106,15 @@ while 1:
 	print(output)
 	lcd.message(output)
 
-	usb0=false
-	usb1=false
+	usb0 = 0
+	usb1 = 0
 	if os.path.ismount(usb0path):
 		secondline += " usb0"
-		usb0=true
+		usb0 = 1
 
 	if os.path.ismount(usb1path):
 		secondline += " usb1"
-		usb1=true
+		usb1 = 1
 
 	lcd.message(secondline)
 
