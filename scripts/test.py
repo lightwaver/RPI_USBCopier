@@ -1,11 +1,9 @@
-d = {}
+secondline = ""
 
-for l in file('/proc/mounts'):
-    if l[0] == '/':
-        l = l.split()
-        d[l[0]] = l[1]
+if os.path.ismount("/media/usb0"):
+	secondline = secondline + " usb0"
 
-import pprint
+if os.path.ismount("/media/usb1"):
+	secondline = secondline + " usb1"
 
-pprint.pprint(d)
-
+print secondline;
