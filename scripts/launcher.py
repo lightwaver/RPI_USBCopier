@@ -88,14 +88,21 @@ lcd.clear()
 printHello(lcd)
 
 try:
+	lastIP = ""
 	copied = 0
 	while 1:
 		firstline = time.strftime("%d.%m.%y %H:%M")
 		secondline = ""
 
-		lcd.clear()
-		output = firstline +"\n" + secondline
-		lcd.message(output)
+
+		myIp = commands.getoutput("hostname -I")
+		if lastIP != myIp:
+			output = firstline +"\n" + myIp
+			lastIP = myIp;
+			lcd.clear()
+			lcd.message(output)
+			time.sleep(3);
+			continue
 
 		usb0 = 0
 		usb1 = 0
