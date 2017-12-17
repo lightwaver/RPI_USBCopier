@@ -110,15 +110,19 @@ while 1:
 	time.sleep(1.0)
 
 	if usb0 & usb1 & (copied == 0):
-		lcd.clear()
-		lcd.message("copy starting")
-		time.sleep(3.0)
-		copyFilesWithProgress(usb1path, usb0path, lcd)
+		try:
+			lcd.clear()
+			lcd.message("copy starting")
+			time.sleep(3.0)
+			copyFilesWithProgress(usb1path, usb0path, lcd)
 
-		lcd.clear()
-		lcd.message("copy finished\nremove the stick")
-		time.sleep(10.0)
-		printHello(lcd)
+			lcd.clear()
+			lcd.message("copy finished\nremove the stick")
+			time.sleep(10.0)
+			printHello(lcd)
+		except Exception as e: 
+			lcd.clear()
+			lcd.message("OOPS ERROR:\n" + e.message)
 		copied = 1
 	else:
 		if usb0 & usb1:
